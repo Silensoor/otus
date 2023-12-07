@@ -123,4 +123,8 @@ tasks {
                 .forEach(::println)
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 72fe8f0 (new project)
