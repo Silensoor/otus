@@ -17,9 +17,12 @@ public class TestResult {
     failedTests++;
   }
 
-  public void printResult() {
-    System.out.println("Total tests: " + totalTests);
-    System.out.println("Successful tests: " + successfulTests);
-    System.out.println("Failed tests: " + failedTests);
+  @Override
+  public String toString() {
+    return "TestResult{" +
+      "totalTests=" + totalTests +
+      ", successfulTests=" + successfulTests +
+      ", failedTests=" + failedTests +
+      '}';
   }
 }
