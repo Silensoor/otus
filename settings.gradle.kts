@@ -1,5 +1,5 @@
 rootProject.name = "homeworkOtus"
-
+include("hw06-reflection")
 
 pluginManagement {
     val jgitver: String by settings
