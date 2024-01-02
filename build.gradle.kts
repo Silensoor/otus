@@ -114,17 +114,13 @@ subprojects {
 }
 
 tasks {
-    val managedVersions by registering {
-        doLast {
-            project.extensions.getByType<DependencyManagementExtension>()
-                .managedVersions
-                .toSortedMap()
-                .map { "${it.key}:${it.value}" }
-                .forEach(::println)
-        }
+  val managedVersions by registering {
+    doLast {
+      project.extensions.getByType<DependencyManagementExtension>()
+        .managedVersions
+        .toSortedMap()
+        .map { "${it.key}:${it.value}" }
+        .forEach(::println)
     }
-<<<<<<< HEAD
+  }
 }
-=======
-}
->>>>>>> 72fe8f0 (new project)
