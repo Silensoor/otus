@@ -13,17 +13,16 @@ public class BanknoteCell<T extends Banknote> {
     this.count += count;
   }
 
-  public int getBanknoteDenomination() {
-    return banknote.getDenomination();
+  public BanknoteDenomination getBanknoteDenomination() {
+    return banknote.denomination();
   }
 
   public int getCount() {
     return count;
   }
 
-  public int withdrawBanknotes(int requestedCount) {
+  public void withdrawBanknotes(int requestedCount) {
     int withdrawnCount = Math.min(requestedCount, count);
     count -= withdrawnCount;
-    return withdrawnCount;
   }
 }
