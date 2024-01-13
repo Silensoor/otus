@@ -2,21 +2,21 @@ package ru.otus.listener.homework;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.otus.handler.ComplexProcessor;
 import ru.otus.model.Message;
 import ru.otus.model.ObjectForMessage;
 import ru.otus.processor.Processor;
-import ru.otus.processor.homework.LogMemento;
-import ru.otus.processor.homework.ProcessorMemento;
+import ru.otus.processor.homework.DateTimeProvider;
 import ru.otus.processor.homework.ProcessorThrowExceptionOnEvenSecond;
+import ru.otus.processor.homework.TestDateTimeProvider;
 
 class HistoryListenerTest {
 
@@ -49,29 +49,12 @@ class HistoryListenerTest {
   }
 
   @Test
-  void complexProcessorTest() throws InterruptedException {
-    List<Processor> processors = List.of(new ProcessorThrowExceptionOnEvenSecond());
-    var complexProcessor = new ComplexProcessor(processors, ex -> {
-    });
+  void complexProcessorTest() {
 
-    var message = new Message.Builder(1L)
-      .field1("field1")
-      .field2("field2")
-      .field3("field3")
-      .field6("field6")
-      .field10("field10")
-      .build();
+    DateTimeProvider dateTimeProvider = new TestDateTimeProvider(LocalTime.of(0, 0, 2));
+    Processor processor = new ProcessorThrowExceptionOnEvenSecond(dateTimeProvider);
 
-    complexProcessor.handle(message);
+    assertThrows(RuntimeException.class, () -> processor.process(new Message.Builder(1L).build()));
 
-    int seconds = LocalTime.now().getSecond();
-
-    if (LogMemento.getMementos().isEmpty()) {
-      assertThat(seconds % 2).isNotEqualTo(0);
-    } else {
-      ArrayDeque<ProcessorMemento> mementos = LogMemento.getMementos();
-      ProcessorMemento first = mementos.getFirst();
-      assertThat(first.lastProcessedTime() % 2).isEqualTo(0);
-    }
   }
 }
