@@ -36,6 +36,7 @@ allprojects {
     val jmh: String by project
     val asm: String by project
     val buddy: String by project
+    val gson: String by project
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -50,6 +51,7 @@ allprojects {
             dependency("org.openjdk.jmh:jmh-generator-annprocess:$jmh")
             dependency("org.ow2.asm:asm-commons:$asm")
             dependency("net.bytebuddy:byte-buddy:$buddy")
+            dependency("com.google.code.gson:gson:$gson")
         }
     }
 
