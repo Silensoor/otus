@@ -2,7 +2,10 @@ rootProject.name = "homeworkOtus"
 
 include("hw06-reflection")
 include("hw08-gc:homework")
+
+include("hw10-aop")
 include("hw12-atm")
+
 
 pluginManagement {
   val jgitver: String by settings
@@ -25,3 +28,4 @@ pluginManagement {
     id("com.diffplug.spotless") version spotless
   }
 }
+
