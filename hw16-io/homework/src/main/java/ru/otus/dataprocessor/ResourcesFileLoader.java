@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import ru.otus.model.Measurement;
 
+import java.io.File;
 import java.io.Reader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class ResourcesFileLoader implements Loader {
   @Override
   public List<Measurement> load() {
     try {
-      var filePath = Paths.get(ClassLoader.getSystemResource(fileNAme).toURI());
+      Path filePath = Paths.get(fileNAme);
       Reader reader = Files.newBufferedReader(filePath);
       var gson = new Gson();
       return gson.fromJson(reader, new TypeToken<List<Measurement>>() {
