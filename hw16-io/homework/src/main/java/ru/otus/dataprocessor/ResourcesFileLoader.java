@@ -1,12 +1,11 @@
 package ru.otus.dataprocessor;
 
-import com.google.gson.JsonParser;
-import jakarta.json.Json;
-import jakarta.json.JsonArray;
-import jakarta.json.JsonObject;
-import jakarta.json.JsonReader;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import ru.otus.model.Measurement;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +21,11 @@ public class ResourcesFileLoader implements Loader {
   public List<Measurement> load() {
     List<Measurement> measurements = new ArrayList<>();
 
-    try (JsonReader jsonReader = Json.createReader(JsonParser.class.getClassLoader().getResourceAsStream(fileNAme))) {
-      JsonArray jsonArray = jsonReader.readArray();
-      for (JsonObject jsonObject : jsonArray.getValuesAs(JsonObject.class)) {
-        String name = jsonObject.getString("name");
-        double value = jsonObject.getJsonNumber("value").doubleValue();
-        measurements.add(new Measurement(name, value));
-      }
-      return measurements;
+    try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileNAme);
+         InputStreamReader reader = new InputStreamReader(inputStream)) {
+      var gson = new Gson();
+      return gson.fromJson(reader, new TypeToken<List<Measurement>>() {
+      }.getType());
     } catch (Exception e) {
       throw new FileProcessException(e);
     }
