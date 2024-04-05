@@ -33,4 +33,4 @@ pluginManagement {
     id("com.diffplug.spotless") version spotless
   }
 }
-
+include("hw25-injection")
