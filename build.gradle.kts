@@ -37,6 +37,8 @@ allprojects {
     val asm: String by project
     val buddy: String by project
     val gson: String by project
+    val jetty: String by project
+    val bcrypt: String by project
     val jak: String by project
 
     apply(plugin = "io.spring.dependency-management")
@@ -53,6 +55,14 @@ allprojects {
             dependency("org.ow2.asm:asm-commons:$asm")
             dependency("net.bytebuddy:byte-buddy:$buddy")
             dependency("com.google.code.gson:gson:$gson")
+            dependency("org.eclipse.jetty.ee10:jetty-ee10-servlet:$jetty")
+            dependency("org.eclipse.jetty:jetty-server:$jetty")
+            dependency("org.eclipse.jetty.ee10:jetty-ee10-webapp:$jetty")
+            dependency("org.eclipse.jetty:jetty-security:$jetty")
+            dependency("org.eclipse.jetty:jetty-http:$jetty")
+            dependency("org.eclipse.jetty:jetty-io:$jetty")
+            dependency("org.eclipse.jetty:jetty-util:$jetty")
+            dependency("at.favre.lib:bcrypt:$bcrypt")
             dependency("org.glassfish:jakarta.json:$jak")
         }
     }

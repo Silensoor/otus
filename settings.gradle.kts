@@ -16,8 +16,7 @@ include("hw21-cache:demo")
 include("hw21-cache:homework")
 include("hw22-jpql")
 include("hw22-jpql:homework-template")
-
-
+include("hw24-webServer")
 
 pluginManagement {
   val jgitver: String by settings
