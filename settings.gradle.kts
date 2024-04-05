@@ -11,6 +11,11 @@ include("hw16-io:homework")
 include("hw18-jdbc")
 include("hw18-jdbc:homework")
 include("hw18-jdbc:demo")
+include("hw21-cache")
+include("hw21-cache:demo")
+include("hw21-cache:homework")
+include("hw22-jpql")
+include("hw22-jpql:homework-template")
 include("hw24-webServer")
 
 pluginManagement {
@@ -34,4 +39,5 @@ pluginManagement {
     id("com.diffplug.spotless") version spotless
   }
 }
+
 

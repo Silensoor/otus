@@ -39,6 +39,7 @@ allprojects {
     val gson: String by project
     val jetty: String by project
     val bcrypt: String by project
+    val jak: String by project
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -62,7 +63,7 @@ allprojects {
             dependency("org.eclipse.jetty:jetty-io:$jetty")
             dependency("org.eclipse.jetty:jetty-util:$jetty")
             dependency("at.favre.lib:bcrypt:$bcrypt")
-
+            dependency("org.glassfish:jakarta.json:$jak")
         }
     }
 
