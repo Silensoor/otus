@@ -17,6 +17,7 @@ include("hw21-cache:homework")
 include("hw22-jpql")
 include("hw22-jpql:homework-template")
 include("hw24-webServer")
+include("hw25-injection")
 
 pluginManagement {
   val jgitver: String by settings
@@ -39,5 +40,3 @@ pluginManagement {
     id("com.diffplug.spotless") version spotless
   }
 }
-
-

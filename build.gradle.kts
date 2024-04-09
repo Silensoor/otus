@@ -37,6 +37,7 @@ allprojects {
     val asm: String by project
     val buddy: String by project
     val gson: String by project
+    val reflections: String by project
     val jetty: String by project
     val bcrypt: String by project
     val jak: String by project
@@ -55,6 +56,7 @@ allprojects {
             dependency("org.ow2.asm:asm-commons:$asm")
             dependency("net.bytebuddy:byte-buddy:$buddy")
             dependency("com.google.code.gson:gson:$gson")
+            dependency("org.reflections:reflections:$reflections")
             dependency("org.eclipse.jetty.ee10:jetty-ee10-servlet:$jetty")
             dependency("org.eclipse.jetty:jetty-server:$jetty")
             dependency("org.eclipse.jetty.ee10:jetty-ee10-webapp:$jetty")
