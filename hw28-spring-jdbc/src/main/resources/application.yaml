@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5430/demoDB
+    username: usr
+    password: pwd
+

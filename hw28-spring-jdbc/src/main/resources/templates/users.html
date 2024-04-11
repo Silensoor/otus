@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="RU">
+<head>
+    <title>Пользователи</title>
+</head>
+
+<body>
+<h4>Добавить пользователя</h4>
+<form th:action="@{/api/users}" method="post" th:object="${user}">
+    <label>
+        name <br/>
+        <input type="text" th:field="*{name}">
+    </label>
+    <br/>
+    <label>
+        login <br/>
+        <input type="text" th:field="*{login}">
+    </label>
+    <br/>
+    <label>
+        password<br/>
+        <input type="password" th:field="*{password}">
+    </label>
+    <br/><br/>
+    <button type="submit">Добавить</button>
+</form>
+
+<h4>Все пользователи:</h4>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Логин</th>
+        <th>Пароль</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.login}"></td>
+        <td th:text="${user.password}"></td>
+        <td>
+            <form th:action="@{/api/users/delete/{id}(id=${user.id})}" method="post">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h4>Получить пользователя по id</h4>
+<form th:action="@{/api/users/find/{id}(id=${userId})}" method="get">
+    <input type="text" id="userIdTextBox" name="id" placeholder="Введите id пользователя">
+    <button type="submit">Получить</button>
+</form>
+
+<div th:if="${fullUser}">
+    <h4>Информация о пользователе:</h4>
+    <p>ID: <span th:text="${user.id}"></span></p>
+    <p>Имя: <span th:text="${user.name}"></span></p>
+    <p>Логин: <span th:text="${user.login}"></span></p>
+    <p>Пароль: <span th:text="${user.password}"></span></p>
+</div>
+
+<div th:if="${errorMessage}">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<pre id="userDataContainer"></pre>
+
+<h4>Случайный пользователь</h4>
+<table style="width: 400px">
+    <thead>
+    <tr>
+        <td style="width: 50px">Id</td>
+        <td style="width: 150px">Имя</td>
+        <td style="width: 100px">Логин</td>
+        <td style="width: 100px">Пароль</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${randomUser != null}">
+        <td th:text="${randomUser.id}"></td>
+        <td th:text="${randomUser.name}"></td>
+        <td th:text="${randomUser.login}"></td>
+        <td th:text="${randomUser.password}"></td>
+    </tr>
+    <tr th:if="${randomUser == null}">
+        <td colspan="4">Случайный пользователь отсутствует</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

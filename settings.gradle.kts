@@ -17,6 +17,8 @@ include("hw21-cache:homework")
 include("hw22-jpql")
 include("hw22-jpql:homework-template")
 include("hw24-webServer")
+include("hw25-injection")
+include("hw31-executor")
 
 pluginManagement {
   val jgitver: String by settings
@@ -38,5 +40,3 @@ pluginManagement {
     id("name.remal.sonarlint") version sonarlint
     id("com.diffplug.spotless") version spotless
   }
-}
-include("hw31-executor")
