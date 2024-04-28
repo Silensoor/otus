@@ -18,6 +18,7 @@ include("hw22-jpql")
 include("hw22-jpql:homework-template")
 include("hw24-webServer")
 include("hw25-injection")
+include("hw32-conc:QueueDemo")
 
 pluginManagement {
   val jgitver: String by settings
@@ -40,3 +41,4 @@ pluginManagement {
     id("com.diffplug.spotless") version spotless
   }
 }
+
