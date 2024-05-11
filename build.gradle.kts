@@ -41,6 +41,9 @@ allprojects {
     val jetty: String by project
     val bcrypt: String by project
     val jak: String by project
+    val grpc: String by project
+    val wiremock: String by project
+    val r2dbcPostgresql: String by project
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -66,6 +69,9 @@ allprojects {
             dependency("org.eclipse.jetty:jetty-util:$jetty")
             dependency("at.favre.lib:bcrypt:$bcrypt")
             dependency("org.glassfish:jakarta.json:$jak")
+            dependency("io.grpc:grpc-netty:$grpc")
+            dependency("io.grpc:grpc-protobuf:$grpc")
+            dependency("io.grpc:grpc-stub:$grpc")
         }
     }
 
